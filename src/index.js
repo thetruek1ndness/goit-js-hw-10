@@ -1,11 +1,93 @@
-import './css/styles.css';
+// import './css/styles.css';
+
+// import Notiflix from 'notiflix';
+// import debounce from 'lodash.debounce';
+// import { fetchCountries } from './fetchCountries';
+// import './css/styles.css';
+
+// const DEBOUNCE_DELAY = 300;
+
+
+// const inputRef = document.querySelector('#search-box');
+// const countryListRef = document.querySelector('.country-list');
+// const  countryInfoRef = document.querySelector('.country-info');
+
+// inputRef.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
+
+// function onInput(event) {
+//   const searchName = event.target.value.trim();
+
+//   if (!searchName) {
+//     clearMarkup();
+//     return;
+//   }
+
+//   fetchCountries(searchName)
+//     .then(findCountry)
+//     .catch(error => console.log(error));
+// }
+
+// function findCountry(countries){
+//   if(countries.length > 10){
+//     Notiflix.Notify.info('Too many matches found.')
+//     clearMarkup();
+//     return;
+//   } 
+  
+//   if((countries.length > 1) && (countries.length <= 10)){
+//     countryInfoRef.innerHTML = "";
+//     return createList(countries);
+//   } 
+  
+//   if(countries.length === 1){
+//     countryListRef.innerHTML = "";
+//     return createDescription(countries);
+//   }
+// }
+
+// function createDescription(countries){
+//   const markup = countries.map(country => {
+//     `<div class="country">
+//     <img src="${country.flags.svg}" alt="flag of ${country.name.official}">
+//     <h2 class="country-name">${country.name.official}</h2>
+//     <ul>
+//       <li>
+//         <p><b>Capital</b>${country.capital}</p>
+//       </li>
+//       <li>
+//         <p><b>Population</b>${country.population}</p>
+//       </li>
+//       <li>
+//         <p><b>Languages</b>${country.languages}</p>
+//       </li>
+//     </ul>
+//   </div>`
+//   }).join('');
+//   countryInfoRef.innerHTML = markup;
+//   return markup;
+// }
+
+// function createList(countries){
+//   const markup = countries.map(country => `<div class="country">
+//   <img src="${country.flags.svg}" alt="flag of ${country.name.official}" width="60" height="30">
+//   <h2 class="country-name">${country.name.official}</h2></div>`).join('');
+//   countryListRef.innerHTML = markup;
+// }
+  
+// function clearMarkup() {
+//     countryListRef.innerHTML = '';
+//     countryInfoRef.innerHTML = '';
+// }
 
 import './css/styles.css';
-import { fetchCountries } from './fetchCountries';
+
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
+import './css/styles.css';
+import { fetchCountries } from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
+
 
 
 const inputRef = document.querySelector('#search-box');
@@ -47,18 +129,19 @@ function findCountry(countries){
 
 function createDescription(countries){
   const markup = countries.map(country => {
-    `<div class="country">
-    <img src="${country.flags.svg}" alt="flag of ${country.name.official}">
-    <h2 class="country-name">${country.name.official}</h2>
+    console.log(country);
+    return `<div class="country">
+    <img src="${country.flags.svg}" alt="flag of ${country.name}" width="300">
+    <h2 class="country-name">${country.name}</h2>
     <ul>
       <li>
-        <p><b>Capital</b>${country.capital}</p>
+        <p><b>Capital</b> ${country.capital}</p>
       </li>
       <li>
-        <p><b>Population</b>${country.population}</p>
+        <p><b>Population</b> ${country.population}</p>
       </li>
       <li>
-        <p><b>Languages</b>${country.Languages}</p>
+        <p><b>Languages</b> ${country.languages[0].name}</p>
       </li>
     </ul>
   </div>`
@@ -68,8 +151,8 @@ function createDescription(countries){
 
 function createList(countries){
   const markup = countries.map(country => `<div class="country">
-  <img src="${country.flags.svg}" alt="flag of ${country.name.official}" width="60" height="30">
-  <h2 class="country-name">${country.name.official}</h2></div>`).join('');
+  <img src="${country.flags.svg}" alt="flag of ${country.name}" width="60" height="30">
+  <h2 class="country-name">${country.name}</h2></div>`).join('');
   countryListRef.innerHTML = markup;
 }
   
